@@ -100,66 +100,6 @@ UP000006548    Escherichia coli 511145     4300            99%      456</code></
 <pre><code>./fetch_fasta_from_csv.sh proteomes.csv</code></pre>
 <p>This will fetch the FASTA sequences for all proteome IDs in the CSV file and save them in the <code>fasta_files</code> directory.</p>
 
-<h3>Bash Script Details</h3>
-
-<p>The provided Bash script (<code>fetch_fasta_from_csv.sh</code>) works as follows:</p>
-<ol>
-    <li>It checks whether the CSV file and Python script are available.</li>
-    <li>It creates a directory called <code>fasta_files</code> to store the fetched FASTA files.</li>
-    <li>It reads the CSV file, skipping the header, and processes each proteome ID using the Python script.</li>
-    <li>It moves each fetched FASTA file to the <code>fasta_files</code> directory.</li>
-    <li>It prints the progress and status for each proteome ID processed.</li>
-</ol>
-
-<pre><code>#!/bin/bash
-
-# Check if the CSV file is provided
-if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 &lt;csv_file&gt;"
-    exit 1
-fi
-
-CSV_FILE=$1
-
-# Check if the CSV file exists
-if [ ! -f "$CSV_FILE" ]; then
-    echo "Error: CSV file not found: $CSV_FILE"
-    exit 1
-fi
-
-# Check if the Python script exists
-PYTHON_SCRIPT="uniprot_fasta_fetcher.py"
-if [ ! -f "$PYTHON_SCRIPT" ]; then
-    echo "Error: Python script not found: $PYTHON_SCRIPT"
-    exit 1
-fi
-
-# Create a directory for output files
-OUTPUT_DIR="fasta_files"
-mkdir -p "$OUTPUT_DIR"
-
-# Read the CSV file, skipping the header
-tail -n +2 "$CSV_FILE" | while IFS=$'\t' read -r proteome_id organism organism_id protein_count busco cpd
-do
-    echo "Processing Proteome ID: $proteome_id"
-    
-    # Run the Python script
-    python "$PYTHON_SCRIPT" "$proteome_id"
-    
-    # Move the resulting FASTA file to the output directory
-    mv "${proteome_id}.fasta" "$OUTPUT_DIR/" 2&gt;/dev/null
-    
-    if [ $? -eq 0 ]; then
-        echo "FASTA file saved in $OUTPUT_DIR/${proteome_id}.fasta"
-    else
-        echo "Error: Failed to process $proteome_id"
-    fi
-    
-    echo "------------------------"
-done
-
-echo "Batch processing complete. FASTA files are stored in $OUTPUT_DIR/"</code></pre>
-
 <h2 id="error-handling">Error Handling</h2>
 <ul>
     <li><strong>Python Script</strong>: If the Python script fails to fetch a FASTA file, it will return an error message indicating the HTTP status code.</li>
