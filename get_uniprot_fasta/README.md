@@ -111,7 +111,7 @@ UP000006548    Escherichia coli 511145     4300            99%      456</code></
 <p>This project is licensed under the MIT License.</p>
 
 <h2 id="contact">Contact</h2>
-<p>For any questions or issues, feel free to reach out to <a href="mailto:youremail@example.com">Your Name</a>.</p>
+<p>For any questions or issues, feel free to reach out to <a href="mailto:ayodele.ayodele@gmail.com">Ayodele</a>.</p>
 
 </body>
 </html>
