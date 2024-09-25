@@ -77,4 +77,4 @@ This will fetch the FASTA sequences for all proteome IDs in the CSV file and sav
 This project is licensed under the MIT License.
 
 ## Contact
-For any questions or issues, feel free to reach out to [Ayodele](mailto:ayodele.ayodele@gmail.com).
+For any questions or issues, please open an issue in the repository.
