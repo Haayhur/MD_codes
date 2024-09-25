@@ -61,7 +61,8 @@
 <h2 id="installation">Installation</h2>
 <ol>
     <li>Clone the repository:
-        <pre><code>git clone https://github.com/yourusername/uniprot-fasta-fetcher.git
+        <pre><code>git clone https://github.com/Haayhur/MD_codes.git
+           
 cd uniprot-fasta-fetcher</code></pre>
     </li>
     <li>Install the required Python package:
